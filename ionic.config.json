@@ -2,5 +2,7 @@
   "name": "hacktalk",
   "app_id": "f93f5562",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }
