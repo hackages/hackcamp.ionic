@@ -5,11 +5,11 @@
         <ion-icon name="create"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-segment ionChange="segmentChanged" ngModel="selectedSegment">
+    <ion-segment (ionChange)="segmentChanged()" [(ngModel)]="selectedSegment">
       <ion-segment-button value="All">
         All
       </ion-segment-button>
-      <ion-segment-button value="New">
+      <ion-segment-button value="Missed">
         Missed
       </ion-segment-button>
     </ion-segment>
@@ -19,8 +19,8 @@
       </button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar color="primary">
-    <ion-searchbar input="filterCalls(searchInput.value)"></ion-searchbar>
+  <ion-toolbar [color]="primary">
+    <ion-searchbar #searchInput (input)="searchTerm$.next(searchInput.value)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -29,14 +29,14 @@
     <ion-item-divider>
       Today
     </ion-item-divider>
-    <ion-item-sliding ngFor="let call in calls">
-      <ion-item>
+    <ion-item-sliding *ngFor="let call of calls">
+      <ion-item (click)="callContact(call.contact.phoneNumber)">
         <ion-avatar item-start>
           <img src="https://unsplash.it/50/50/?random">
         </ion-avatar>
-        <h2>call.contact.username</h2>
-        <ion-icon name="call" color="call.missed?'danger': 'primary'">&nbsp; call.contact.phoneNumber</ion-icon>
-        <ion-icon name="information-circle" color="primary" item-end></ion-icon>
+        <h2>{{call.contact.username}}</h2>
+        <ion-icon name="call" [color]="call.missed?'danger': 'primary'">&nbsp; {{call.contact.phoneNumber}}</ion-icon>
+        <ion-icon name="information-circle" [color]="primary" item-end></ion-icon>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="primary">
