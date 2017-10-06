@@ -25,3 +25,29 @@ Develop our own version of HackHub
 
 --- ChatsPage with Firebase
  - During the last day, we'll spend time building the chat apps using Firebase.
+
+ - ChatsPage should list all your contact
+// Template for chat-room.html
+ <ion-header>
+  <ion-navbar>
+    <ion-title>
+      Chat
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+ <ion-list no-lines>
+  <ion-item *ngFor="let message of messages | async">
+   <h3>{{message.username}}</h3>
+   <p>{{message.message}}</p>
+  </ion-item>
+ </ion-list>
+</ion-content>
+<ion-footer>
+ <ion-item>
+  <ion-input type="text" placeholder="type here..." [(ngModel)]="newmessage"></ion-input>
+  <button ion-button clear item-right (click)="send(newmessage)">Send</button>
+ </ion-item>
+</ion-footer>
+
+-- Bonus: Add
