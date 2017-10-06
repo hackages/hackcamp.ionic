@@ -92,4 +92,6 @@
     </plugin>
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="~2.2.2" />
+    <allow-navigation href="http://192.168.0.156:8100" />
+    <allow-navigation href="http://10.2.0.132:8100" />
 </widget>

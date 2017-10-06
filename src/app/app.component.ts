@@ -14,6 +14,7 @@ export class HackTalk {
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       statusBar.styleDefault();
+      statusBar.show();
       splashScreen.hide();
     });
   }

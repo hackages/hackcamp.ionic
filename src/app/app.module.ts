@@ -11,6 +11,21 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
 import { Contacts } from '@ionic-native/contacts';
+import { ChatsProvider } from './../providers/chatsProviders';
+import { HttpModule } from '@angular/http';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+
+// Initialize Firebase
+const config = {
+  apiKey: "AIzaSyAQ7BscqDzN9iEHbzx6x5gAAs8z2KERews",
+  authDomain: "hacktalk-1658d.firebaseapp.com",
+  databaseURL: "https://hacktalk-1658d.firebaseio.com",
+  projectId: "hacktalk-1658d",
+  storageBucket: "hacktalk-1658d.appspot.com",
+  messagingSenderId: "939788198861"
+};
+
 
 
 @NgModule({
@@ -24,7 +39,10 @@ import { Contacts } from '@ionic-native/contacts';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(HackTalk)
+    IonicModule.forRoot(HackTalk),
+    HttpModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(config),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -39,11 +57,10 @@ import { Contacts } from '@ionic-native/contacts';
     StatusBar,
     SplashScreen,
     Contacts,
-    Camera,
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler
-    }
+    },
   ]
 })
 export class AppModule {}
